@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="ostaszewskim" id="004_add_review_table">
+        <createTable tableName="review">
+
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="content" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="creation_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+
+            <column name="author_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="movie_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+        </createTable>
+
+        <createTable tableName="review_likes">
+            <column name="review_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="review_id, author_id" tableName="review_likes"/>
+
+        <addForeignKeyConstraint baseTableName="review" baseColumnNames="movie_id" constraintName="fk_reviews_movies" referencedTableName="movie"
+                                 referencedColumnNames="id" onDelete="CASCADE" />
+
+        <addForeignKeyConstraint baseTableName="review" baseColumnNames="author_id" constraintName="fk_reviews_authors" referencedTableName="users"
+                                 referencedColumnNames="id" onDelete="CASCADE" />
+    </changeSet>
+
+    <changeSet author="ostaszewskim" id="createSequence-reviews">
+        <createSequence incrementBy="1"
+                        sequenceName="review_seq"
+                        startValue="1"/>
+    </changeSet>
+
+</databaseChangeLog>

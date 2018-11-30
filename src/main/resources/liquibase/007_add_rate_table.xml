@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="ostaszewskim" id="007_add_rate_table">
+        <createTable tableName="rate">
+
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="rate" type="integer">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="movie_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="author_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+    <changeSet author="ostaszewskim" id="createSequence-rate">
+        <createSequence incrementBy="1"
+                        sequenceName="rate_seq"
+                        startValue="1"/>
+    </changeSet>
+
+</databaseChangeLog>

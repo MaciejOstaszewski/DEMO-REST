@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="ostaszewskim" id="002_load_users">
+       <loadData tableName="users" file="classpath:/liquibase/users.csv" separator=";"/>
+    </changeSet>
+
+    <changeSet author="ostaszewskim" id="002_load_users-2">
+        <insert tableName="users">
+            <column name="id">3</column>
+            <column name="login">user3</column>
+            <column name="first_name">user3</column>
+            <column name="last_name">user3</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

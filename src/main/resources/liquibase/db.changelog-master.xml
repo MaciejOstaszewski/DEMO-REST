@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="classpath:/liquibase/001_add_users_table.xml"/>
+    <include file="classpath:/liquibase/002_load_users.xml"/>
+    <include file="classpath:/liquibase/003_add_movie_table.xml"/>
+    <include file="classpath:/liquibase/004_add_review_table.xml"/>
+    <include file="classpath:/liquibase/005_load_movies.xml"/>
+    <include file="classpath:/liquibase/006_load_reviews.xml"/>
+    <include file="classpath:/liquibase/007_add_rate_table.xml"/>
+    <include file="classpath:/liquibase/008_load_rates.xml"/>
+    <include file="classpath:/liquibase/009_load_likes.xml"/>
+
+
+</databaseChangeLog>

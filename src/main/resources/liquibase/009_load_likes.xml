@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="ostaszewskim" id="009_load_likes">
+        <loadData tableName="review_likes" file="classpath:/liquibase/reviews_likes.csv" separator=";"/>
+        <loadData tableName="movie_likes" file="classpath:/liquibase/movies_likes.csv" separator=";"/>
+    </changeSet>
+</databaseChangeLog>
