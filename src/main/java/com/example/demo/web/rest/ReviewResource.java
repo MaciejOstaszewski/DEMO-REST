@@ -32,13 +32,12 @@ public class ReviewResource {
     @PostMapping
     public ResponseEntity<ReviewDTO> saveReview(@Valid @RequestBody ReviewDTO reviewDTO) {
         return new ResponseEntity<>(reviewService.saveReview(reviewDTO), HttpStatus.CREATED);
-
     }
 
     @DeleteMapping("/{id}")
-    public void deleteReview(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteReview(@PathVariable Long id) {
         reviewService.deleteReview(id);
-
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("like/{idu}/{idr}")

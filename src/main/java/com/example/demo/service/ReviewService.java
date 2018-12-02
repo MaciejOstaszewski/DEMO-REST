@@ -28,9 +28,6 @@ public class ReviewService {
     }
 
     public Optional<ReviewDTO> getReview(Long id) {
-        Review review = reviewRepository.getOne(id);
-        ReviewDTO dto = reviewMapper.toDto(review);
-
         return reviewRepository.findOneById(id).map(reviewMapper::toDto);
     }
 
@@ -42,7 +39,9 @@ public class ReviewService {
     }
 
     public void deleteReview(Long id) {
-        reviewRepository.deleteById(id);
+        reviewRepository.findOneById(id).ifPresent(review -> {
+            reviewRepository.deleteById(id);
+        });
     }
 
 

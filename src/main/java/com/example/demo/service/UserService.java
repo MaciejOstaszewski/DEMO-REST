@@ -29,8 +29,6 @@ public class UserService {
     }
 
     public Optional<UserDTO> getUser(Long id) {
-        UserEntity userEntity = userRepository.getOne(id);
-        UserDTO dto = userMapper.toDto(userEntity);
         return userRepository.getOneById(id).map(userMapper::toDto);
     }
     public UserEntity getUserEntity(Long id) {

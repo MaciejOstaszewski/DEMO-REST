@@ -23,7 +23,6 @@ public class MovieResource {
     private final RateService rateService;
 
 
-
     @GetMapping
     public List<MovieDTO> getMovies() {
         return movieService.getAllMovies();
@@ -57,8 +56,9 @@ public class MovieResource {
     }
 
     @GetMapping("like/{idu}/{idm}")
-    public void likeMovie(@PathVariable Long idu, @PathVariable Long idm) {
+    public ResponseEntity<Void> likeMovie(@PathVariable Long idu, @PathVariable Long idm) {
         movieService.likeMovie(idu, idm);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

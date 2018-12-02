@@ -51,13 +51,12 @@ public class MovieService {
         return reviewMapper.toDtos(reviews);
     }
 
-
     public void likeMovie(Long userId, Long movieId) {
         Movie movie = movieRepository.getOne(movieId);
-        movie.getLikedMovies().add(userService.getUserEntity(userId));
-
-        movieRepository.save(movie);
+        movieRepository.findOneById(movieId).ifPresent(movie1 -> {
+            movie.getLikedMovies().add(userService.getUserEntity(userId));
+            movieRepository.save(movie);
+        });
     }
-
 
 }
